@@ -12,4 +12,10 @@ public class TestController {
 	public String test() {
 		return "Hellow world!";
 	}
+	
+	@RequestMapping("/test_view")
+	public String test_view() {
+		return "test/test";
+	}
+	
 }
