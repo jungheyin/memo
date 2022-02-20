@@ -3,4 +3,27 @@
 
 header {height:100px}
 .contents {height:500px}
+
+.signInBtn {background-color:#DF9B93;}
+.signInBtn:hover{background-color:#E5C4BF;}
+.signInText {
+	 color: white;
+	 font-weight: bold;
+	 text-decoration: none;}
+.signInText:hover {
+	text-decoration: none;
+	font-weight:bold;
+	color: #DF9B93;}
+	
+.signUpBtn {background-color:#FBC776;}
+.signUpBtn:hover {background-color:#FAE390;}
+.signUpText {
+	 color: white;
+	 font-weight: bold;
+	 text-decoration: none;}
+.signUpText:hover {
+	text-decoration: none;
+	font-weight:bold;
+	color: #FBC776;}
 footer {height:100px}
+

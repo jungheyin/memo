@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Memo</title>
 
 	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
@@ -14,16 +14,16 @@
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-	<div id="wrap">
-		<header class="bg-warning">
+	<div id="wrap" class="container">
+		<header class="d-flex justify-content-center align-items-end">
 			<jsp:include page="../include/gnb.jsp" />
 		</header>
-		
-		<section class="contents bg-primary">
+		<hr>
+		<section class="contents d-flex justify-content-center align-items-center">
 			<jsp:include page="../${viewName}.jsp" /> <!-- ${viewName}으로 서버에서 제어하게해준다. -->
 		</section>
 		
-		<footer class="bg-success">
+		<footer class="d-flex justify-content-center align-items-center">
 			<jsp:include page="../include/footer.jsp" />
 		</footer>
 	</div>
