@@ -7,24 +7,66 @@
 <title>Insert title here</title>
 </head>
 <body>
-	 <div> <!-- submit일경우 action="/user/sign_up_for_submit" -->
+	 <div class="d-flex justify-center"> <!-- submit일경우 action="/user/sign_up_for_submit" -->
 	 		<!-- ajax일 경우  action="/user/sign_up"-->
-	 	<form id="signUpForm" method="post" action="/user/sign_up">
 	 	<!-- 화면이 넘어가는 것이므로 form으로 넘겨도 된다. -->
-	 	
-	 	</form>
-		<div id="idCheckLength" class="small text-danger d-none"></div>
-		<div id="idCheckDuplicated" class="small text-danger d-none"></div>
-		<div id="idCheckOk" class="small text-danger d-none">사용 가능한 ID입니다.</div>
+
+		<div class="sign-up-box">
+		 	<h5 class="mb-3 text-center"><b>회원가입</b></h5>
+		 	<form id="signUpForm" method="post" action="/user/sign_up">
+		 	<table class="sign-up-table table table-border-collapes">
+		 		<tr class="border-none">
+		 			<th class="font-weight-bold">아이디</th>
+		 			<td> 
+		 				<div class="d-flex">
+		 					<input name="loginId" id="loginId" class="loginId form-control " placeholder="네글자 이상 입력하세요.">
+		 					<button type="button" id="loginIdCheckBtn" class="loginIdCheckBtn btn btn-warning ml-3 ">
+			 					<small class="font-weight-bold">중복확인</small>
+			 				</button>
+		 				</div>
+		 				<!-- 아이디 중복 체크 결과-->
+		 				<div id="idCheckLength" class="idCheckLength small text-danger d-none"></div>
+						<div id="idCheckDuplicated" class="idCheckDuplicated small text-danger d-none"></div>
+						<div id="idCheckOk" class="idCheckOk small text-danger d-none">사용 가능한 ID입니다.</div>
+			
+		 			</td>
+		 		</tr>
+		 		<tr>
+		 			<th class="font-weight-bold">비밀번호</th>
+		 			<td>
+		 				<input name="password" id="password" class="password form-control " placeholder="비밀번호를 입력하세요.">
+		 			</td>
+		 		</tr>
+		 		<tr>
+		 			<th class="font-weight-bold">비밀번호</th>
+		 			<td>
+		 				<input name="confirmPassword" id="confirmPassword" class="confirmPassword form-control " placeholder="비밀번호를 입력하세요.">
+		 			</td>
+		 		</tr>
+		 		<tr>
+		 			<th class="font-weight-bold">이름</th>
+		 			<td>
+		 				<input name="name" id="name" class="name form-control " placeholder="이름을 입력하세요.">
+		 			</td>
+		 		</tr>
+		 		<tr>
+		 			<th class="font-weight-bold">이메일</th>
+		 			<td>
+		 				<input name="email" id="email" class="email form-control " placeholder="memo@memo.com">
+		 			</td>
+		 		</tr>
+		 	</table>
 		
-		<button type="submit" id=""class="btn btn-primary" >회원가입</button>
-	</div>
+			<button type="submit" id="signUpFrom"class="signUpFrom btn btn-warning w-100" ><b>회원가입</b></button>
+		 	</form>
+	 	</div>
+	 </div>
 
 <script> // form 태그로 이용해서 id값으로 가져온다.
  $(document).ready(function(){
 	// 아이디 중복확인
 	$('#loginIdCheckBtn'). on('click', function() {
-		alert("중복확인 버튼 클릭");
+		//alert("중복확인 버튼 클릭");
 		let loginId = $('#loginId').val().trim();
 		
 		// 상황 문구 안보이게 모두 초기화
@@ -46,7 +88,7 @@
 			url: "/user/is_duplicated_id"
 			,data: {"loginId":loginId}
 			,success: function(data) { // String으로 내려가는데 json도 String이다.
-				if (data.result == true) // 기본값이 true이므로 == true 생략 가능
+				if (data.result == true) {// 기본값이 true이므로 == true 생략 가능
 					// 중복인 경우 => 이미 사용중인 아이디
 					$('#idCheckDuplicated').removeClass('d-none');
 				} else if (data.result == false) {
@@ -70,10 +112,11 @@
 		e.preventDAfault(); //서브밋 기증 중단 - 자동으로 서브밋 해주는 것이다.
 		
 		// validation
-		let loginId = $('#loginid').val().trim();
+		let loginId = $('#loginId').val().trim();
 		if (loginId == '') {
 			alert("아이디를 입력해주세요.");
 			return false;
+		}
 		
 		let password = $('#password').val();
 		let confirmPassword = $('#confirmPassword').val();
@@ -97,7 +140,7 @@
 			return false;
 		}
 		
-		let email =$('#eamil').val().trim();
+		let email =$('#email').val().trim();
 		if (email == '') {
 			alert("이메일을 입력해주세요.");
 			return false;
