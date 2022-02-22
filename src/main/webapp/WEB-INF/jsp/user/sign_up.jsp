@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title></title>
 </head>
 <body>
 	 <div class="d-flex justify-center"> <!-- submit일경우 action="/user/sign_up_for_submit" -->
@@ -14,50 +14,60 @@
 		<div class="sign-up-box">
 		 	<h5 class="mb-3 text-center"><b>회원가입</b></h5>
 		 	<form id="signUpForm" method="post" action="/user/sign_up">
-		 	<table class="sign-up-table table table-border-collapes">
-		 		<tr class="border-none">
+		 	<table class="sign-up-table table">
+		 	
+		 		<tr><!-- 아이디 -->
 		 			<th class="font-weight-bold">아이디</th>
 		 			<td> 
 		 				<div class="d-flex">
-		 					<input name="loginId" id="loginId" class="loginId form-control " placeholder="네글자 이상 입력하세요.">
-		 					<button type="button" id="loginIdCheckBtn" class="loginIdCheckBtn btn btn-warning ml-3 ">
+		 					<input type="text" name="loginId" id="loginId" class="loginId form-control " placeholder="네글자 이상 입력하세요.">
+		 					<button type="button" name="loginIdCheckBtn" 
+		 						id="loginIdCheckBtn" class="loginIdCheckBtn btn btn-warning ml-3 ">
 			 					<small class="font-weight-bold">중복확인</small>
 			 				</button>
 		 				</div>
 		 				<!-- 아이디 중복 체크 결과-->
-		 				<div id="idCheckLength" class="idCheckLength small text-danger d-none"></div>
-						<div id="idCheckDuplicated" class="idCheckDuplicated small text-danger d-none"></div>
+		 				<div id="idCheckLength" class="idCheckLength small text-danger d-none">4글자 이상 입력해주세요.</div>
+						<div id="idCheckDuplicated" class="idCheckDuplicated small text-danger d-none">중복확인 해주세요.</div>
 						<div id="idCheckOk" class="idCheckOk small text-danger d-none">사용 가능한 ID입니다.</div>
 			
 		 			</td>
 		 		</tr>
-		 		<tr>
+		 		
+		 		<tr><!-- 비밀번호 -->
 		 			<th class="font-weight-bold">비밀번호</th>
 		 			<td>
-		 				<input name="password" id="password" class="password form-control " placeholder="비밀번호를 입력하세요.">
+		 				<input type="password" name="password" id="password" 
+		 					class="password form-control " placeholder="비밀번호를 입력하세요.">
 		 			</td>
 		 		</tr>
-		 		<tr>
+		 		
+		 		<tr><!-- 체크비밀번호 -->
 		 			<th class="font-weight-bold">비밀번호</th>
 		 			<td>
-		 				<input name="confirmPassword" id="confirmPassword" class="confirmPassword form-control " placeholder="비밀번호를 입력하세요.">
+		 				<input type="password" name="confirmPassword" id="confirmPassword" 
+		 					class="confirmPassword form-control " placeholder="비밀번호를 입력하세요.">
 		 			</td>
 		 		</tr>
-		 		<tr>
+		 		
+		 		<tr><!-- 이름 -->
 		 			<th class="font-weight-bold">이름</th>
 		 			<td>
-		 				<input name="name" id="name" class="name form-control " placeholder="이름을 입력하세요.">
+		 				<input type="text" name="name" id="name" 
+		 					class="name form-control " placeholder="이름을 입력하세요.">
 		 			</td>
 		 		</tr>
-		 		<tr>
+		 		
+		 		<tr><!-- 이메일 -->
 		 			<th class="font-weight-bold">이메일</th>
 		 			<td>
-		 				<input name="email" id="email" class="email form-control " placeholder="memo@memo.com">
+		 				<input type="text" name="email" id="email" 
+		 					class="email form-control " placeholder="memo@memo.com">
 		 			</td>
 		 		</tr>
 		 	</table>
 		
-			<button type="submit" id="signUpFrom"class="signUpFrom btn btn-warning w-100" ><b>회원가입</b></button>
+			<button type="submit" name="signUpFrom" id="signUpFrom"class="signUpFrom btn btn-warning w-100" ><b>회원가입</b></button>
 		 	</form>
 	 	</div>
 	 </div>

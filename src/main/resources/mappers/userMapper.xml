@@ -12,11 +12,10 @@
  			`loginId` =#{loginId}
  	</select>
  	
- 	<insert id="insertUser" parameterType="com.memo.user.model.User">
+ 	<insert id="insertUser" parameterType="map">
  		INSERT
  		(	
- 			`id`
- 			,`loginId`
+ 			`loginId`
  			,`password`
  			,`name`
  			,`email`
@@ -25,8 +24,7 @@
  		)
 		VALUES
 		(
-			#{id}
-			,#{loginId}
+			#{loginId}
 			,#{password}
 			,#{name}
 			,#{email}
@@ -34,6 +32,21 @@
 			,NOW()
 		)
 		 		
- 	
  	</insert>
+ 	
+ 	<select id="selectUserByLoginIdPassword" parameterType="map" resultType="com.memo.user.model.User">
+ 		SELECT
+ 			`id`
+ 			,`loginId`
+ 			,`password`
+ 			,`name`
+ 			,`email`
+ 			,`createdAt`
+ 			,`updatedAt`
+ 		FROM
+ 			`user`
+ 		WHERE
+ 			`loginId` = #{loginId}
+ 			AND `password` = #{password}
+ 	</select>
  </mapper>
