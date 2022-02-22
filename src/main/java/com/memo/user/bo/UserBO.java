@@ -12,7 +12,7 @@ public class UserBO {
 	@Autowired
 	private UserDAO userDAO;
 	
-	public boolean existLoginId(String loginId) {
+	public boolean existLoginId(String loginId) { // exist: 존재하다
 		return userDAO.existLoginId(loginId);
 	}
 	

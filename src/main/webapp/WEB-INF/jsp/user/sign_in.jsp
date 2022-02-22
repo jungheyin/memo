@@ -40,13 +40,13 @@ $(document).ready(function() {
 		let params = $(this).serialize(); // form 태그에 있는 name 값들을 쿼리스트링으로 구성
 		
 		$.post(url,params) // 포스트 방식으로 날아간다.
-		.done(function(data) { 
+		.done(function(data)) { 
 			// 응답값 
 			if (data.result == 'success') {
 				// 성공일 경우
 				location.href = "post/post_list_view"; 
 			} else {
-				alert("data.errorMessage") // 실패하면 머무르도록 얼럿만 띄어준다.
+				alert('data.errorMessage') // 실패하면 머무르도록 얼럿만 띄어준다.
 			}
 		});
 		

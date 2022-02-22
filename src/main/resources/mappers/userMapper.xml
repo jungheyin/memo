@@ -13,7 +13,7 @@
  	</select>
  	
  	<insert id="insertUser" parameterType="map">
- 		INSERT
+ 		INSERT INTO `user`
  		(	
  			`loginId`
  			,`password`
