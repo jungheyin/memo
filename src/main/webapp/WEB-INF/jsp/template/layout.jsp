@@ -19,7 +19,7 @@
 			<jsp:include page="../include/gnb.jsp" />
 		</header>
 		<hr>
-		<section class="contents d-flex justify-content-center align-items-center">
+		<section class="contents d-flex justify-content-center">
 			<jsp:include page="../${viewName}.jsp" /> <!-- ${viewName}으로 서버에서 제어하게해준다. -->
 		</section>
 		
