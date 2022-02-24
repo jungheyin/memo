@@ -30,7 +30,7 @@ public class PostController {
 		
 		model.addAttribute("postList", postList); // postList 가져온다.
 		model.addAttribute("viewName", "post/post_list");
-		return "/template/layout";
+		return "template/layout";
 	}
 	
 	/**
