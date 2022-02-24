@@ -67,7 +67,7 @@
 		 		</tr>
 		 	</table>
 		
-			<button type="submit" name="signUpFrom" id="signUpFrom"class="signUpFrom btn btn-warning w-100" ><b>회원가입</b></button>
+			<button type="button" name="signUpBtn" id="signUpBtn" class="signUpFrom btn btn-warning w-100" ><b>회원가입</b></button>
 		 	</form>
 	 	</div>
 	 </div>
@@ -75,7 +75,8 @@
 <script> // form 태그로 이용해서 id값으로 가져온다.
  $(document).ready(function(){
 	// 아이디 중복확인
-	$('#loginIdCheckBtn'). on('click', function() {
+	$('#loginIdCheckBtn'). on('click', function(e) {
+
 		//alert("중복확인 버튼 클릭");
 		let loginId = $('#loginId').val().trim();
 		
@@ -116,11 +117,11 @@
 	});
 	
 	// 회원가입
-	$('#signUpFrom').on('submit', function(e) { 
+	$('#signUpForm').on('submit', function(e) { 
 		// return false는 submit 법칙이다!!
 		// validation 체크시 return false로 인해 다른 페이지로 안넘어가야한다.(넘어가면 안됨!)
-		e.preventDAfault(); //서브밋 기증 중단 - 자동으로 서브밋 해주는 것이다.
-		
+		e.preventDefault(); //서브밋 기증 중단 - 자동으로 서브밋 해주는 것이다.
+		alert("dd");
 		// validation
 		let loginId = $('#loginId').val().trim();
 		if (loginId == '') {
@@ -187,7 +188,7 @@
 		$.post(url, params) // url은 응답값이 내려오는 주소! (get함수도 있음!!)
 		.done(function(data) { // 응답값을 보고 만들기
 			if (data.result == 'success') {
-				alet("회원 가입을 환영합니다. 로그인을 해주세요.");
+				alert("회원 가입을 환영합니다. 로그인을 해주세요.");
 				location.href = "/user/sign_in_view"; 
 			} else {
 				alert("회원 가입에 실패했습니다. 다시 시도해주세요.");

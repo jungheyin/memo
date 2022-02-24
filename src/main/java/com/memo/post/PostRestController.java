@@ -54,6 +54,7 @@ public class PostRestController {
 		}
 		
 		// userId, userLoginId, subject, content, file => BO insert 요청
+		postBO.addPost(userId, userLoginId, subject, content, file);
 		
 		return result;
 	}

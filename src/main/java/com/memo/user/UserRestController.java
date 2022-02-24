@@ -27,7 +27,7 @@ public class UserRestController {
 	 * @param loginId
 	 * @return
 	 */
-	@RequestMapping("/is_duplication_id")
+	@RequestMapping("/is_duplicated_id")
 	public Map<String, Object> isDuplicationId( // 결과를 {"result": success"}나올 예정이므로 Map이다.
 			@RequestParam("loginId") String loginId) {
 		
@@ -95,7 +95,7 @@ public class UserRestController {
 			// session은 로그인 판별 용도이다!!
 		} else {
 			result.put("result", "error");
-			result.put("errorMessage", "존재하지 않는 사용자입니다. 관리자에게 문의해주세요");
+			result.put("errorMessage", "존재하지 않는 사용자입니다.");
 		}
 		return result;
 		

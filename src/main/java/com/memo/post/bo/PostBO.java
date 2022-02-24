@@ -6,14 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.memo.common.FileManagerService;
 import com.memo.post.dao.PostDAO;
 import com.memo.post.model.Post;
 
 @Service
+// 스프링 빈은 Auto와이어로 불러준다.
 public class PostBO {
 	
 	@Autowired 
-	public PostDAO postDAO;
+	private PostDAO postDAO;
+	
+	@Autowired 
+	private FileManagerService fileManager; 
 	
 	public List<Post> getPostList() {
 		return postDAO.selectPostList();
@@ -27,9 +32,14 @@ public class PostBO {
 		// file 기능을 다른곳에서 사용할수 있도록 만들어주는것이 더 좋다!!
 		// file이 없을때도 있다.
 		if (file != null) {
-			
+			//TODO: 파일 매니저 서비스 	input:MultipartFile 	output:이미지의 주소
+			imagePath = fileManager.saveFile(userLoginId, file);
 		}
 		
 		// insert DAO
+		// int userId, String subject, string content,String imagePath
+		postDAO.insertPost(userId, subject, null, imagePath);
 	}
+	
+	
 }

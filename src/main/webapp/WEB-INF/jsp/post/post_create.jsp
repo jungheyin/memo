@@ -103,12 +103,13 @@ $(document).ready(function() {
 				if (data.result == "success") {
 					alert("메모가 저장되었습니다.");
 					location.href = "/post/post_list_view"
+				} else {
+					alert(data.errormessage);
 				}
 			}
 			, error: function(e) {
 				alert("메모 저장에 실패했습니다. 관리자에게 문의해주세요");
 				// 여기서 뿌려도 되고 서버쪽에서 뿌려줘도 된다.
-				
 			}
 		});		// alert로 줄마다 되는지 안되는지 검증해 본다.
 	});
