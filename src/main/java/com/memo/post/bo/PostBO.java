@@ -1,4 +1,4 @@
-package com.memo.post.bo;
+package com.memo.post.bo; // bo할때 쿼리끼리 모아두면 보기 편하다!
 
 import java.util.List;
 
@@ -20,8 +20,12 @@ public class PostBO {
 	@Autowired 
 	private FileManagerService fileManager; 
 	
-	public List<Post> getPostList() {
-		return postDAO.selectPostList();
+	public List<Post> getPostListByUserId(int userId) {
+		return postDAO.selectPostListByUserId(userId);
+	}
+	
+	public Post getPostById(int id) {
+		return postDAO.selectPostById(id);
 	}
 	// userLoginId는 파일 업로드를 하기 위한 파라미터이다
 	public void addPost(int userId, String userLoginId, String subject, String content, MultipartFile file) { // userId는 null이면 안되므로 int이다!

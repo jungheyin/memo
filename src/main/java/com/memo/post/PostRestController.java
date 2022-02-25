@@ -24,12 +24,7 @@ public class PostRestController {
 	@Autowired
 	public PostBO postBO;
 	
-	// 테스트용 Controller
-	@RequestMapping("/posts")
-	public List<Post> posts() { // 디버깅 걸어서 볼수있는게 따로 담아서 보는것이 좋다.
-		List<Post> postList = postBO.getPostList();
-		return postList;
-	}
+
 	
 	@PostMapping("/create")
 	public Map<String, Object> create(

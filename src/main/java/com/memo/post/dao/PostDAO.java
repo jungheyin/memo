@@ -10,7 +10,9 @@ import com.memo.post.model.Post;
 @Repository
 public interface PostDAO {
 	
-	public List<Post> selectPostList();
+	public List<Post> selectPostListByUserId(int userId);
+	
+	public Post selectPostById(int id);
 	
 	public void insertPost(
 			@Param("userId") int userId, 
