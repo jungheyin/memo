@@ -1,32 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-<div class="w-75 my-2">
-	<h1>글쓰기</h1>
+<div class="d-flex justify-content-center">
+<div class="w-75">
+	<h4 class="ml-3 my-3 font-weight-bold">글쓰기</h4>
 	
 	<!-- form 태그를 해서 ajax를 사용할지
 	 	form태그만 사용할지 ajax만 사용할지는 선택사항이다 
 	 	이번엔 ajax로 보내는것!-->
 	 	
-	<input type="text" id="subject" class="form-control" placeholder="제목을 입력해 주세요.">	
+	<input type="text" id="subject" class="form-control mt-2 mb-3" placeholder="제목을 입력해 주세요.">	
 	<textarea class="form-control" id="content" 
 	 	rows="15" placeholder="내용을 입력해 주세요."></textarea>
 	 	
-	 <div class="d-flex justify-content-end my-3">
+	 <div class="d-flex justify-content-end my-4">
 	 	<input id="file" type="file" accept=".jpg, .png, .gif, .jpeg">
 	 	<!-- appept로 허용되는 파일만 보이게 된다. 
 	 		막아주는것이 아니라 편의성을 위해 그림만 보여지게 해주는것이다.-->
 	 </div>
 	 
 	 <div class="d-flex justify-content-between">
-		 <button type="button" id="postListBtn" class="btn btn-dark">목록</button>
+		 <button type="button" id="postListBtn" class="btn btn-dark mt-2">목록</button>
 		 
 		 
-		 <div>
+		 <div class="mt-2">
 		 	<button type="button" id="clearBtn" class="btn btn-secondary">모두지우기</button>
-		 	<button type="button" id="saveBtn" class="btn btn-warning">저장</button>
+		 	<button type="button" id="saveBtn" class="btn btn-warning ml-2">저장</button>
 		 </div>
 	 </div>
+</div>
 </div>
 
 <script>
@@ -45,6 +46,7 @@ $(document).ready(function() {
 		// 공백으로 세팅- 제목과 내용 부분을 빈칸으로 만든다.
 		$('#subject').val('');
 		$('#content').val('');
+		$('#file').val('');
 	});
 	
 	// 3.글 내용 저장
@@ -65,7 +67,7 @@ $(document).ready(function() {
 		// 파일이 업로드 된 경우 확장자 체크
 		let file = $('#file').val(); // 파일의 경로만 가져온다.
 		console.log(file);
-		if (file != '') {
+		if (file != "") {
 			let ext = file.split('.').pop().toLowerCase(); 
 			// 파일 경로를 .으로 나누고 확장자가 있는 마지막 문자열을 가져온 후 모두 소문자로 변경
 			if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {

@@ -2,19 +2,27 @@
     pageEncoding="UTF-8"%>
 
 
-<div> 
 	<!-- form태그는 form-name-submit 3종이 세트이다! -->
 	<form id="loginForm" action="/user/sign_in" method="post" >
-		<input type="text" name="loginId" id="loginId"class="form-control mb-2"
+		<div class="d-flex justify-content-center mt-5">
+		<input type="text" name="loginId" id="loginId"class="form-control mb-2 mt-5 col-5"
 			 placeholder="ID">
-		<input type="password" name="password" id="password" class="form-control mb-3"
-			placeholder="PASSWORD">
-			
-		<input type="submit" class="btn btn-block btn-warning mb-2" value="로그인">
+		</div>
 		
-		<a href="/user/sign_up_view" class="btn btn-blok btn-secondary w-100">회원가입</a>
+		<div class="d-flex justify-content-center mb-4">
+		<input type="password" name="password" id="password" class="form-control col-5"
+			placeholder="PASSWORD">
+		</div>
+		
+		<div class="d-flex justify-content-center">	
+		<input type="submit" class="btn btn-block btn-warning mb-2 col-5" value="로그인">
+		</div>
+		
+		<div class="d-flex justify-content-center">
+		<a href="/user/sign_up_view" class="btn btn-blok btn-secondary col-5">회원가입</a>
+		</div>
 	</form>
-	
+</div>	
 <script>
 $(document).ready(function() {
 	$('#loginForm').on('submit', function(e) {
@@ -41,9 +49,9 @@ $(document).ready(function() {
 		$.post(url,params) // 포스트 방식으로 날아간다.
 		.done(function(data) { 
 			// 응답값 
-			if (data.result == 'success') {
+			if (data.result == "success") {
 				// 성공일 경우
-				location.href = "post/post_list_view"; 
+				location.href ="/post/post_list_view"; 
 			} else {
 				alert(data.errorMessage); // 실패하면 머무르도록 얼럿만 띄어준다.
 			}
@@ -55,4 +63,4 @@ $(document).ready(function() {
 // form을 쓰지만 바로 아작스를 호출 하는법도 있다. -선생님은 이것을 더 선호한다.
 
 </script>
-</div>
+

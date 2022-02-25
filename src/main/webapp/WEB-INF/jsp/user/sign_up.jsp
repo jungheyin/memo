@@ -7,7 +7,7 @@
 <title></title>
 </head>
 <body>
-	 <div class="d-flex justify-center"> <!-- submit일경우 action="/user/sign_up_for_submit" -->
+	 <div class="d-flex justify-content-center mt-5"> <!-- submit일경우 action="/user/sign_up_for_submit" -->
 	 		<!-- ajax일 경우  action="/user/sign_up"-->
 	 	<!-- 화면이 넘어가는 것이므로 form으로 넘겨도 된다. -->
 
@@ -22,14 +22,14 @@
 		 				<div class="d-flex">
 		 					<input type="text" name="loginId" id="loginId" class="loginId form-control " placeholder="네글자 이상 입력하세요.">
 		 					<button type="button" name="loginIdCheckBtn" 
-		 						id="loginIdCheckBtn" class="loginIdCheckBtn btn btn-warning ml-3 ">
+		 						id="loginIdCheckBtn" class="btn btn-warning ml-3 ">
 			 					<small class="font-weight-bold">중복확인</small>
 			 				</button>
 		 				</div>
 		 				<!-- 아이디 중복 체크 결과-->
-		 				<div id="idCheckLength" class="idCheckLength small text-danger d-none">4글자 이상 입력해주세요.</div>
-						<div id="idCheckDuplicated" class="idCheckDuplicated small text-danger d-none">중복확인 해주세요.</div>
-						<div id="idCheckOk" class="idCheckOk small text-danger d-none">사용 가능한 ID입니다.</div>
+		 				<div id="idCheckLength" class="small text-danger d-none">4글자 이상 입력해주세요.</div>
+						<div id="idCheckDuplicated" class="small text-danger d-none">중복확인 해주세요.</div>
+						<div id="idCheckOk" class="small text-danger d-none">사용 가능한 ID입니다.</div>
 			
 		 			</td>
 		 		</tr>
@@ -38,7 +38,7 @@
 		 			<th class="font-weight-bold">비밀번호</th>
 		 			<td>
 		 				<input type="password" name="password" id="password" 
-		 					class="password form-control " placeholder="비밀번호를 입력하세요.">
+		 					class="form-control " placeholder="비밀번호를 입력하세요.">
 		 			</td>
 		 		</tr>
 		 		
@@ -46,7 +46,7 @@
 		 			<th class="font-weight-bold">비밀번호</th>
 		 			<td>
 		 				<input type="password" name="confirmPassword" id="confirmPassword" 
-		 					class="confirmPassword form-control " placeholder="비밀번호를 입력하세요.">
+		 					class="form-control " placeholder="비밀번호를 입력하세요.">
 		 			</td>
 		 		</tr>
 		 		
@@ -54,7 +54,7 @@
 		 			<th class="font-weight-bold">이름</th>
 		 			<td>
 		 				<input type="text" name="name" id="name" 
-		 					class="name form-control " placeholder="이름을 입력하세요.">
+		 					class="form-control " placeholder="이름을 입력하세요.">
 		 			</td>
 		 		</tr>
 		 		
@@ -62,12 +62,12 @@
 		 			<th class="font-weight-bold">이메일</th>
 		 			<td>
 		 				<input type="text" name="email" id="email" 
-		 					class="email form-control " placeholder="memo@memo.com">
+		 					class="form-control " placeholder="memo@memo.com">
 		 			</td>
 		 		</tr>
 		 	</table>
 		
-			<button type="button" name="signUpBtn" id="signUpBtn" class="signUpFrom btn btn-warning w-100" ><b>회원가입</b></button>
+			<button type="submit" id="signUpBtn" class="btn btn-warning w-100" ><b>회원가입</b></button>
 		 	</form>
 	 	</div>
 	 </div>
@@ -121,7 +121,7 @@
 		// return false는 submit 법칙이다!!
 		// validation 체크시 return false로 인해 다른 페이지로 안넘어가야한다.(넘어가면 안됨!)
 		e.preventDefault(); //서브밋 기증 중단 - 자동으로 서브밋 해주는 것이다.
-		alert("dd");
+		
 		// validation
 		let loginId = $('#loginId').val().trim();
 		if (loginId == '') {
@@ -175,7 +175,7 @@
 		// $('#signUpFrom')[0].submit(); //[0]을 꼭 써줘야 된다. 이것을 하는것은 수동으로 submit 해주는것이다.
 		
 		// 2. ajax 서브밋
-		let url= $('#signUpFrom').attr('action'); // form 태그에 있는 action 주소를 가져오는법
+		let url= $(this).attr('action'); // form 태그에 있는 action 주소를 가져오는법
 
 		// alert(url);
 		let params = $(this).serialize(); // form태그로 가져오므로 name속성이 꼭 있어야 한다. (한방에 가져오는 법)

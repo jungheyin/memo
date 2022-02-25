@@ -2,10 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<div class="w-75">
-	<h1>글 목록</h1>
-	
-	<table class="table table-hover">
+<div class="w-100 ">
+	<div class="d-flex justify-content-between">
+		<h5 class="ml-3 mt-2 font-weight-bold">글 목록</h5>
+		<a href="/post/post_create_view" 
+			class="btn btn-warning mb-3 font-weight-bold text-white">글쓰기</a> 
+	</div>
+	<div class="">
+	<table class="table table-hover text-center">
 		<thead>
 			<tr>
 				<th>번호</th>
@@ -29,10 +33,10 @@
 		</c:forEach>
 		</tbody>
 	</table>
-	
+	</div>
 	<div class="float-right">
 		<!-- float를 사용해서 버튼을 원하는 위치에 놓을수 있지만 다음에 클리어를 해줘야한다는 단점. -->
 		<!-- 화면 이동시 앵커 태그로 보내는것이 편하다. -->
-		<a herf="/post/post_create_view" class="btn btn-warning">글쓰기</a> 
+		
 	</div>
 </div>

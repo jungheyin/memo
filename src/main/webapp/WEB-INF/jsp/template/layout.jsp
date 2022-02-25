@@ -15,11 +15,11 @@
 </head>
 <body>
 	<div id="wrap" class="container">
-		<header class="d-flex justify-content-center align-items-end">
+		<header class="d-flex justify-content-between align-items-end">
 			<jsp:include page="../include/gnb.jsp" />
 		</header>
 		<hr>
-		<section class="contents d-flex justify-content-center">
+		<section class="contents">
 			<jsp:include page="../${viewName}.jsp" /> <!-- ${viewName}으로 서버에서 제어하게해준다. -->
 		</section>
 		
