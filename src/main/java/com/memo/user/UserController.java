@@ -56,13 +56,17 @@ public class UserController {
 		model.addAttribute("viewName", "user/sign_in");
 		return "template/layout";
 	}
-	
+	/**
+	 * 로그아웃
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/sign_out")
 	public String signOut(HttpServletRequest request) {
 		// 로그아웃 - 세션에 있는 키값들을 모두 지운다.
 		HttpSession session = request.getSession();
 		session.removeAttribute("userLoginId");
-		session.removeAttribute("userid");
+		session.removeAttribute("userId");
 		session.removeAttribute("userName");
 		
 		// 리다이렉트 => 로그인 화면

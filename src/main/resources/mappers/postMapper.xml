@@ -33,6 +33,7 @@
 		WHERE
 			`Id` = #{Id}
  	</select>
+ 	
  	<insert id="insertPost" parameterType="map">
  		INSERT INTO `post`
  		(
@@ -43,7 +44,7 @@
 			,`createdAt`
 			,`updatedAt`
  		)
- 		FROM
+ 		VALUES
  		(
  			#{userId}
  			, #{subject}

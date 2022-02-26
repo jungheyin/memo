@@ -14,7 +14,7 @@
 	 	
 	 <div class="d-flex justify-content-end my-4">
 	 	<input id="file" type="file" accept=".jpg, .png, .gif, .jpeg">
-	 	<!-- appept로 허용되는 파일만 보이게 된다. 
+	 	<!-- accept로 허용되는 파일만 보이게 된다. 
 	 		막아주는것이 아니라 편의성을 위해 그림만 보여지게 해주는것이다.-->
 	 </div>
 	 
@@ -50,7 +50,8 @@ $(document).ready(function() {
 	});
 	
 	// 3.글 내용 저장
-	$('#saveBtn').on('click', function(e) {  // e를 통해 e.preventDefault를 사용할수있음
+	$('#saveBtn').on('click', function(e) { 
+		// e를 통해 e.preventDefault를 사용할수있음
 		
 		//validation (DB의 스키마 참고 - null여부)
 		let subject = $('#subject').val().trim(); // 변수
@@ -106,7 +107,7 @@ $(document).ready(function() {
 					alert("메모가 저장되었습니다.");
 					location.href = "/post/post_list_view"
 				} else {
-					alert(data.errormessage);
+					alert(data.errorMessage);
 				}
 			}
 			, error: function(e) {

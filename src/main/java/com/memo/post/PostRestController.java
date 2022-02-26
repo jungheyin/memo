@@ -41,6 +41,7 @@ public class PostRestController {
 		HttpSession session = request.getSession();
 		Integer userId = (Integer)session.getAttribute("userId"); // null일수 있으므로 Integer
 		String userLoginId = (String)session.getAttribute("userLoginId");
+		
 		// 권한검사를 나중에 할것이므로 if를 해주는것!
 		if(userId == null) {
 			result.put("result", "error");

@@ -30,7 +30,7 @@ public class PostController {
 	public String postListView(Model model, HttpServletRequest request) {
 		// 글쓴이 정보를 가져오기 위해 세션에서 userId를 꺼낸다.
 		HttpSession session = request.getSession();
-		int userId = (int)session.getAttribute("userid"); //
+		int userId = (int)session.getAttribute("userId"); //
 		
 		// postList는 가져와서 보여줄것이므로 글목록을 가져오기만 한다.
 		// TODO: 글 목록 DB에서 가져오기

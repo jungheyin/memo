@@ -89,7 +89,7 @@ public class UserRestController {
 			// 로그인 - 세션에 저장(로그인 상태를 유지한다)
 			HttpSession session = request.getSession();
 			session.setAttribute("userLoginId", user.getLoginId());
-			session.setAttribute("userid", user.getId());
+			session.setAttribute("userId", user.getId());
 			session.setAttribute("userName", user.getName());
 			// 여기는 간편하게만 저장해야한다. session은 어디에서든 사용할수 있다. db처럼 사용하지 말것!
 			// session은 로그인 판별 용도이다!!
