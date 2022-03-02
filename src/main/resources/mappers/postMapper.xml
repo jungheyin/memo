@@ -55,4 +55,18 @@
  		)
  		
  	</insert>
+ 	
+ 	<update id="updatePostByUserIdPostId" parameterType="map" >
+ 	 UPDATE `post`
+ 	 SET
+ 	 	`subject` = #{subject}
+ 	 	, `content` = #{content}
+ 	 	<!-- imagePath가 있을 때만 수정한다. -->
+ 	 	<if test="imagePath != null">, `imagePath` = #{imagePath}</if> <!-- 동적쿼리! -->
+ 	 	, `updatedAt` = NOW()
+ 	 WHERE
+ 	 	`id` = #{postId}
+ 	 	AND `userId` = #{userId}
+ 	 	
+ 	</update>
  </mapper>
