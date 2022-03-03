@@ -1,5 +1,6 @@
 package com.memo.post.bo; // bo할때 쿼리끼리 모아두면 보기 편하다!
 
+import java.io.IOException;
 import java.util.List;
 
 import org.slf4j.Logger; // logger는 import가 중요!!! 
@@ -34,8 +35,8 @@ public class PostBO {
 	}
 	// userLoginId는 파일 업로드를 하기 위한 파라미터이다
 	public void addPost(int userId, String userLoginId, String subject, String content, MultipartFile file) { // userId는 null이면 안되므로 int이다!
+		// 1. 여기서 파일을 이미지 패스를 만든다.
 		// db에서는 파일을 저장을 못하고 url을 저장할수 잇다.
-		// 여기서 파일을 이미지 패스를 만든다.
 		
 		String imagePath = null;
 		// file 기능을 다른곳에서 사용할수 있도록 만들어주는것이 더 좋다!!
@@ -45,7 +46,7 @@ public class PostBO {
 			imagePath = fileManager.saveFile(userLoginId, file);
 		}
 		
-		// insert DAO
+		// 2. insert DAO
 		// int userId, String subject, string content,String imagePath
 		postDAO.insertPost(userId, subject, null, imagePath);
 	}
@@ -72,7 +73,11 @@ public class PostBO {
 			// 새로 업로드 된 이미지가 성공하면 기존 이미지는 삭제 ( 기존 이미지가 있을 때에만)
 			if (post.getImagePath() != null && imagePath != null) {
 				// 기존 이미지 삭제 (post의 있던 옛것)
-				fileManager.deleteFile(post.getImagePath()); 
+				try {
+					fileManager.deleteFile(post.getImagePath());
+				} catch (IOException e) {
+					logger.error("[update post] 이미지 삭제 실패 {}, {}",  post.getId(), post.getImagePath());
+				} 
 			}
 		}
 		
@@ -80,5 +85,31 @@ public class PostBO {
 		return postDAO.updatePostByUserIdPostId(userId, postId, subject, content, imagePath);
 		
 	}
+	
+	// 삭제
+	public int deletePostByPostIdAndUserId(int postId, int userId) {
+		// 요청시 로그인이 풀릴경우를 대비해 userId를 가져온다.
+		
+		// 1. 삭제전 게시글을 먼저 가져와야한다(imagePath가 있기 때문이다.)
+		Post post = getPostById(postId);
+		if (post == null) {
+			logger.warn("[delete post] 삭제할 메모가 존재하지 않습니다.");
+			return 0;
+		} 
+		// 2. imagePath가 있는 경우 파일 삭제
+		if (post.getImagePath() != null) {
+			// 기존 이미지 삭제
+			try {
+				fileManager.deleteFile(post.getImagePath());
+			} catch (IOException e) {
+				logger.error("[delet post] 이미지 삭제 실패 {}, {}",  post.getId(), post.getImagePath());
+			} 
+		}
+		// 3. db에서 post 삭제
+		
+		return postDAO.deletePostByUserIdPostId(userId, postId) ;
+		
+	}
+	// 글만지우는것인지 다른것도 다 지워야 하는지 생각해 봐야한다.
 	
 }

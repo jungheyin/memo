@@ -49,17 +49,13 @@ public class FileManagerService {
 	
 	// 삭제
 	// input: 이미지 패스 ,output:
-	public void deleteFile(String imagePath) {
+	public void deleteFile(String imagePath) throws IOException { // 위로 던졌으므로 부른 BO에서 책임져야 한다.
 		// 1. image path의 /images/hi1856_21098475885/sun.png에서
 			// images/를 제거한 path를 실제 저장경로를 뒤에 붙인다. 
 			//	FILE_UPLOAD_PATH + image 를 하면 images가 겹치므로 /images/ 를 제거해준다.
 		Path path = Paths.get(FILE_UPLOAD_PATH + imagePath.replace("/images/", ""));
 		if (Files.exists(path)) { // file이 있으면 삭제
-			try {
 				Files.delete(path);
-			} catch (IOException e) {
-				e.printStackTrace(); // logging으로 해주는 편이다.
-			}
 		} // 여기까지 하면 사진만 제거 되고 폴더는 그대로 남아있다.!!
 		
 		// 2. 디렉토리(폴더) 삭제
@@ -68,9 +64,9 @@ public class FileManagerService {
 			try {
 				Files.delete(path);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 	}
 }
+// 삭제시 부른 BO에서 처리하는 이유는 logger를 이용해서 에러기록을 남길수있기때문이다.

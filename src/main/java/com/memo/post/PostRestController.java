@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,7 +61,15 @@ public class PostRestController {
 		
 		return result;
 	}
-	
+	/**
+	 * 글쓰기 업데이트
+	 * @param postId
+	 * @param subject
+	 * @param content
+	 * @param file
+	 * @param request
+	 * @return
+	 */
 	@PutMapping("/update") // ajax의 type과 일치해야만 들어온다.
 	public Map<String, Object> update(
 			@RequestParam("postId") int postId,
@@ -82,6 +91,27 @@ public class PostRestController {
 			result.put("result", "error");
 			result.put("errorMessage", "메모 수정에 실패했습니다.");
 		}
+		return result;
+	}
+	
+	@DeleteMapping("/delete")
+	public Map<String,Object> delete(
+			@RequestParam("postId") int postId,
+			HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		int userId =(int) session.getAttribute("userId");
+		
+		Map<String, Object> result = new HashMap<>();
+		result.put("result", "success");
+		
+		// db요청
+		int row = postBO.deletePostByPostIdAndUserId(postId, userId);
+		if (row > 1) {
+			result.put("result", "error");
+			result.put("errorMassage", "삭제하는데 실패했습니다.");
+		}
+		
 		return result;
 	}
 }

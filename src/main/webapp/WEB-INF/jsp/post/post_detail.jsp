@@ -22,13 +22,15 @@
 	 </c:if>
 	 
 	 <div class="d-flex justify-content-between">
-		 <button type="button" id="postDeleteBtm" class="btn btn-dark mt-2">삭제</button>
+		 <button type="button" id="postDeleteBtn" class="btn btn-dark mt-2"
+		 	 data-post-id="${post.id}">삭제</button>
 		 
 		 
 		 <div class="mt-2">
 		 	<button type="button" id="postListBtn" class="btn btn-secondary">목록</button>
 		 	<!-- 목록 부분을 앵커태그로 해도 된다. -->
-		 	<button type="button" id="saveBtn" class="btn btn-warning ml-2" data-post-id="${post.id}">수정</button>
+		 	<button type="button" id="saveBtn" class="btn btn-warning ml-2"
+		 	 	data-post-id="${post.id}">수정</button>
 		 </div>
 	 </div>
 </div>
@@ -109,6 +111,30 @@ $(document).ready(function() {
 		});
 	});
 	
+	$('#postDeleteBtn').on('click', function() {
+		let postId = $(this).data('post-id');
+		console.log(postId);
+		
+		//ajax
+		$.ajax({
+			type: "DELETE"
+			, url: "/post/delete"
+			, data: {"postId": postId}
+			, success: function(data) {
+				if (result = "success") {
+					alert("삭제가 되었습니다.");
+					location.href="/post/post_list_view";
+				} else {
+					alert(data.errorMassage);
+				}
+			}
+			, error: function(e) {
+				alert("메모에 삭제하는데 실패했습니다.")
+			}
+			
+		});
+		
+	});	
 });
 
 </script>
