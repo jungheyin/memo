@@ -16,9 +16,41 @@
 			`post`
 		WHERE
 			`userId` = #{userId}
+			
+ 		<!--  direction이 null이면 첫페이지이다.-->
+		<if test="direction == null">
 		ORDER BY `id` DESC
+		</if>
+		
+		<!-- direction이 next이면 다음 -->
+		<if test="direction == 'next'">
+		<![CDATA[
+			AND `id` < #{standardId}
+			]]>
+		ORDER BY `id` DESC
+		</if>
+		
+		<!-- direction이 prev이면 이전-->
+		<if test="direction == 'prev'">
+		<![CDATA[
+			AND `id	 > #{standardId}
+			]]>
+		ORDER BY `id` ASC
+		</if>
+
+		LIMIT ${limit}<!-- #{}는 ''가 붙여지므로 안붙여지는 ${}이것을 사용해야한다. -->
  	</select>
  	
+ 	<select id="selectPostByIdUserIdAndSort" parameterType="map" resultType="int">
+ 		SELECT
+ 			`id`
+ 		FROM
+ 			`post`
+ 		WHERE
+ 			`userId` = #{userId}
+ 		ORDER BY `id` ${sort}
+ 		LIMIT 1
+ 	</select>
  	<select id="selectPostById" parameterType="int" resultType="com.memo.post.model.Post">
  		SELECT
  			`id`

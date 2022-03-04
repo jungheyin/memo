@@ -34,9 +34,18 @@
 		</tbody>
 	</table>
 	</div>
-	<div class="float-right">
-		<!-- float를 사용해서 버튼을 원하는 위치에 놓을수 있지만 다음에 클리어를 해줘야한다는 단점. -->
-		<!-- 화면 이동시 앵커 태그로 보내는것이 편하다. -->
-		
+	<!-- 페이징 -->
+	<div class="d-flex justify-content-center">
+		<c:if test="${prevId ne 0}">
+			<a href="/post/post_list_view?prevId=${prevId}" class="mr-2">&lt;&lt;</a>
+		</c:if>
+		<c:if test="${nextId ne 0}">
+			<a href="/post/post_list_view?nextId=${nextId}" class="mr-2">&gt;&gt;</a>
+		</c:if>
 	</div>
+	<!-- <div class="float-right">
+		float를 사용해서 버튼을 원하는 위치에 놓을수 있지만 다음에 클리어를 해줘야한다는 단점.
+		화면 이동시 앵커 태그로 보내는것이 편하다.
+		
+	</div> -->
 </div>
