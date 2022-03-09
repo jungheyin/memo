@@ -63,10 +63,10 @@ $(document).ready(function() {
 		// 파일이 업로드 된 경우 확장자 체크
 		let file = $('#file').val(); // 파일의 경로만 가져온다.
 		console.log(file);
-		if (file != "") {
+		if (file != '') {
 			let ext = file.split('.').pop().toLowerCase(); 
 			// 파일 경로를 .으로 나누고 확장자가 있는 마지막 문자열을 가져온 후 모두 소문자로 변경
-			if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+			if ($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
 					// -1 (= false)
 				alert("gif, png, jpg, jpeg파일만 업로드 할 수 있습니다.");
 					// 파일을 비운다.

@@ -72,6 +72,7 @@ public class PostBO {
 	public Post getPostById(int id) {
 		return postDAO.selectPostById(id);
 	}
+	
 	// userLoginId는 파일 업로드를 하기 위한 파라미터이다
 	public void addPost(int userId, String userLoginId, String subject, String content, MultipartFile file) { // userId는 null이면 안되므로 int이다!
 		// 1. 여기서 파일을 이미지 패스를 만든다.

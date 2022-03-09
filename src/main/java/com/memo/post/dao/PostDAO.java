@@ -16,7 +16,7 @@ public interface PostDAO {
 			@Param("standardId") Integer standardId, 
 			@Param("limit") int limit);
 	
-	public  selectPostByIdUserIdAndSort(
+	public int selectPostByIdUserIdAndSort(
 			@Param("userId") int userId,
 			@Param("sort") String sort);
 	
